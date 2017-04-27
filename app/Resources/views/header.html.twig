@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-6">
+            <a href="{{ path('index') }}">
+                <p class="text-center">Vente en ligne</p>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a href="{{ path('summary_basket') }}">
+                <span class="glyphicon glyphicon-shopping-cart"></span> Panier
+                <span class="badge">{{ countCartItems() }}</span>
+
+            </a>
+        </div>
+    </div>
+
+</div>

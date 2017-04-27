@@ -1,0 +1,44 @@
+#index:
+#    path: /
+#    defaults:  { _controller: VelBundle:Home:index }
+
+phpinfo:
+    path: /phpinfo
+    defaults:  { _controller: VelBundle:Home:phpinfo }
+
+test_hello:
+    path:      /hello/{name}
+    defaults:  { _controller: VelBundle:Home:hello }
+
+index:
+    path: /
+    defaults:  { _controller: VelBundle:Product:list }
+
+product_show:
+    path: /product/{id}
+    defaults:  { _controller: VelBundle:Product:show }
+
+add_to_basket:
+    path: /cart/add/{id}
+    defaults:  { _controller: VelBundle:Cart:add }
+
+remove_to_basket:
+    path: /cart/remove/{id}
+    defaults:  { _controller: VelBundle:Cart:remove }
+
+clear_basket:
+    path: /cart/clear
+    defaults:  { _controller: VelBundle:Cart:clear }
+
+summary_basket:
+    path: /cart
+    defaults:  { _controller: VelBundle:Cart:summary }
+
+app:
+    resource: "@VelBundle/Controller/"
+    type:     annotation
+
+index_react:
+    path: /react
+    defaults: { _controller: VelBundle:Product:listReact}
+

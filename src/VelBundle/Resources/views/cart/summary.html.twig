@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1>{{ 'cart_summary' | trans }}</h1>
+                </div>
+
+                {% if cart.hasItems %}
+                    <div class="col-md-12 text-right">
+                        <h4>
+                            <a href="{{ path('clear_basket') }}">
+                                {{ 'cart_clear' | trans }}
+                            </a>
+                        </h4>
+                    </div>
+                {% endif %}
+            </div>
+
+            {% if cart.hasItems %}
+                {% include 'VelBundle:cart:_partials/basket.html.twig' %}
+            {% else %}
+                <p class="text-center">{{ 'cart_empty' | trans }}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

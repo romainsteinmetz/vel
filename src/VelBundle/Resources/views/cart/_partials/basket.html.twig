@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                {% for item in cart.items %}
+                    <tr>
+                        <td>
+                            <strong>{{ item.product.name }}</strong>
+                        </td>
+                        <td>
+                            <a
+                                    class="btn btn-danger btn-xs"
+                                    href="{{ path('remove_to_basket', {'id': item.product.id}) }}"
+                            >
+                                -
+                            </a>
+                            {{ item.quantity }}
+                            <a
+                                    class="btn btn-success btn-xs"
+                                    href="{{ path('add_to_basket', {'id': item.product.id}) }}"
+                            >
+                                +
+                            </a>
+                        </td>
+                        <td>
+                            {{ item.getTotal | price }} ({% trans with {'%price%': item.product.price|price} %}product_unit_price{% endtrans %})
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                <tr class="info">
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <strong>{{ cart.getTotal | price }}</strong>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div id="product_price">
+    <p class="text-center">{{ prod.price | price }}</p>
+
+    <p class="text-center">
+        <a
+            class="btn btn-success btn-lg"
+            href="{{ path('add_to_basket', {'id': prod.id}) }}"
+            >
+            {{ 'add_to_basket' | trans }}
+        </a>
+    </p>
+</div>

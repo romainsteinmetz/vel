@@ -1,0 +1,8 @@
+services:
+    test_listener:
+        class: VelBundle\Listener\CartListener
+        arguments:
+            - '@app.cart_handler'
+            - '@logger'
+        tags:
+            - { name: kernel.event_subscriber }

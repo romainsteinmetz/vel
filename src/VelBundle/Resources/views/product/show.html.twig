@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-8 product_details">
+                    {% include 'VelBundle:product:_partials/description.html.twig' %}
+                </div>
+                <div class="col-xs-6 col-md-4 product_price">
+                    {% include 'VelBundle:product:_partials/price.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

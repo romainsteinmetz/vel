@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <h1>{{ 'product_list' | trans }}</h1>
+
+            {% for prod in products %}
+                <div id="product">
+                    <div id="name">{{ prod.name }}</div>
+                    <div class="price">{{ prod.price | price }}</div>
+                    <a
+                        class="btn btn-success"
+                        href="{{ path('product_show', {'id': prod.id}) }}">
+                        {{ 'choose_product' | trans }}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
