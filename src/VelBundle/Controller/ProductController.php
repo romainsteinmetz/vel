@@ -55,8 +55,7 @@ class ProductController extends BaseController
         $products = $this->getRepository('VelBundle:Product')->findAll();
 
         return [
-            'products' => $products,
-            'test' => 'romain'
+            'products' => $products
         ];
     }
 }

@@ -1,73 +1,21 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+    <script type="text/javascript">
+        var DetailVar= {
+            products: {{ products|serialize|raw }}
+        };
+    </script>
+    {% javascripts '@VelBundle/Resources/public/js/velreact.js' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {% stylesheets '@VelBundle/Resources/public/css/velreact.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+{% endblock %}
+
 {% block body %}
     <div id="root"></div>
-
-    <script type="text/babel">
-
-        var test = '{{ test }}';
-
-
-        function Welcome(props) {
-            return <h1>Hello, {props.name}</h1>;
-        }
-
-        function App() {
-            return (
-                    <div>
-                        <Welcome name={test} />
-                        <Welcome name="Cahal" />
-                        <Welcome name="Edite" />
-                    </div>
-            );
-        }
-
-        class ProductRow extends React.Component {
-            render() {
-                var name = this.props.product.name;
-                return (
-                        <div className="product">
-                            <div id="name">{this.props.product.name}</div>
-                            <div class="price">{this.props.product.price}</div>
-                            {#<a#}
-                                {#class="btn btn-success"#}
-                                {#href="{{ path('product_show', {'id': prod.id}) }}">#}
-                                {#{{ 'choose_product' | trans }}#}
-                            {#</a>#}
-                        </div>
-                );
-            }
-        }
-
-        class ProductTable extends React.Component {
-            render() {
-                var rows = [];
-                this.props.products.forEach(function(product) {
-                    rows.push(<ProductRow product={product} key={product.id} />);
-                });
-                return (
-                        <div id="products">
-                            {rows}
-                        </div>
-                );
-            }
-        }
-
-        var PRODUCTS = [
-            {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
-            {category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball'},
-            {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'},
-            {category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch'},
-            {category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5'},
-            {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
-        ];
-
-        var PRODUCTS = {{ products|serialize|raw }};
-
-        ReactDOM.render(
-                <ProductTable products={PRODUCTS} />,
-                document.getElementById('root')
-        );
-
-    </script>
 {% endblock %}

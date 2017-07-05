@@ -2,6 +2,7 @@
 
 namespace VelBundle\Twig;
 
+use JMS\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
@@ -15,12 +16,18 @@ class VelExtension extends \Twig_Extension
     protected $session;
 
     /**
+     * @var Serializer
+     */
+    protected $serializer;
+
+    /**
      * VelExtension constructor.
      * @param Session $session
      */
-    public function __construct(Session $session)
+    public function __construct(Session $session, Serializer $serializer)
     {
         $this->session = $session;
+        $this->serializer = $serializer;
     }
 
     /**
@@ -40,6 +47,7 @@ class VelExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFunction('countCartItems', [$this, 'countCartItems']),
+            new \Twig_SimpleFunction('serialize', [$this, 'serialize']),
         ];
     }
 
@@ -66,5 +74,14 @@ class VelExtension extends \Twig_Extension
             return 0;
         }
         return $cart->getItemsCount();
+    }
+
+    /**
+     * @param $value
+     * @return mixed|string
+     */
+    public function serialize($value)
+    {
+        return $this->serializer->serialize($value,'json');
     }
 }

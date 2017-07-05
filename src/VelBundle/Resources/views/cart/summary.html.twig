@@ -8,7 +8,7 @@
                     <h1>{{ 'cart_summary' | trans }}</h1>
                 </div>
 
-                {% if cart.hasItems %}
+                {% if countCartItems() > 0 %}
                     <div class="col-md-12 text-right">
                         <h4>
                             <a href="{{ path('clear_basket') }}">
@@ -19,7 +19,7 @@
                 {% endif %}
             </div>
 
-            {% if cart.hasItems %}
+            {% if countCartItems() > 0 %}
                 {% include 'VelBundle:cart:_partials/basket.html.twig' %}
             {% else %}
                 <p class="text-center">{{ 'cart_empty' | trans }}</p>

@@ -2,36 +2,46 @@
 
 namespace VelBundle\Entity;
 
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+
 /**
  * Created by PhpStorm.
  * User: romainsteinmetz
  * Date: 26/09/2016
  * Time: 22:03
+ *
+ * @ExclusionPolicy("all")
  */
 class Product
 {
     /**
      * @var int
+     * @Expose
      */
     private $id;
 
     /**
      * @var string
+     * @Expose
      */
     protected $name;
 
     /**
      * @var string
+     * @Expose
      */
     protected $description;
 
     /**
      * @var string
+     * @Expose
      */
     protected $slug;
 
     /**
      * @var float
+     * @Expose
      */
     protected $price;
 

@@ -1,0 +1,1 @@
+/Users/romainsteinmetz/workspace/vel_react/build/static/js/main.2b3a45c5.js

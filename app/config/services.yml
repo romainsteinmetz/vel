@@ -12,6 +12,7 @@ services:
         public: false
         arguments:
             - '@session'
+            - '@jms_serializer'
         tags:
             - { name: twig.extension }
 
